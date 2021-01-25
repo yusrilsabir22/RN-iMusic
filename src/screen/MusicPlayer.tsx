@@ -26,27 +26,6 @@ const MusicPlayer: React.FC<GlobalProps> = (props) => {
     const [duration, setDuration] = useState(dateSecToString(0))
     const [currPosition, setCurrPosition] = useState(0)
     const playlistTitle = useSelector((state: YoutubeReducerState) => state.playlistTitle)
-    let translate1 = useRef(new Animated.Value(0)).current;
-    let translate2 = useRef(new Animated.Value(0)).current;
-    const animating = () => {
-        Animated.parallel([
-            Animated.timing(translate1, {
-                toValue: 1,
-                duration: active.title.length * 100 + 12000,
-                useNativeDriver: true,
-            }),
-            Animated.timing(translate2, {
-                toValue: 1,
-                delay: active.title.length * 100 + 3000,
-                duration: active.title.length * 100 + 12000,
-                useNativeDriver: true
-            })
-        ]).start((data) => {
-            translate1.setValue(0);
-            translate2.setValue(0);
-            animating()
-        })
-    }
 
     const onSlidingComplete = (value: number) => {
         const time = dateSecToString(value)
@@ -62,7 +41,7 @@ const MusicPlayer: React.FC<GlobalProps> = (props) => {
     const play = async () => {
         await TrackPlayer.add({
             id: active.videoId,
-            url: 'http://music.blondev.my.id/youtube/play?uc='+active.videoId,
+            url: 'http://music.blondev.my.id/play?uc='+active.videoId,
             title: active.title,
             artist: active.owner
         });
@@ -71,7 +50,6 @@ const MusicPlayer: React.FC<GlobalProps> = (props) => {
     }
 
     useEffect(() => {
-        animating()
         setupPlayer()
         let timeout = setTimeout(() => {
             play()
@@ -121,8 +99,9 @@ const MusicPlayer: React.FC<GlobalProps> = (props) => {
                         <Text style={{padding: 5, color: 'white'}}>Tanya Malam, dapatkah kau lihat perbedaan</Text>
                     </ScrollView>
                     <View style={{marginTop: SPACING * 2}}>
-                        <Text style={{fontSize: 20, letterSpacing: 1, color: 'white', fontWeight: 'bold'}}>{active.owner}</Text>
-                        <TextScroller text={active.title || ''} delay={0} duration={(active.title.length % 52) * 1000} />
+                        <Text style={{fontSize: 20, letterSpacing: 1, color: 'white'}}>{active.owner}</Text>
+                        {/* <TextScroller text={active.title || ''} delay={0} duration={(active.title.length % 52) * 1000} /> */}
+                        <Text style={{fontSize: 23, letterSpacing: 1, color: 'white', fontWeight: 'bold'}}>{active.title}</Text>
                     </View>
                 </View>
             </View>
@@ -131,16 +110,16 @@ const MusicPlayer: React.FC<GlobalProps> = (props) => {
             >
                 <Text style={{color: '#FFF'}}>{dateSecToString(position)}</Text>
                 <Slider
-                    maximumValue={stringToNumber(active.durationText)}
+                    maximumValue={active.durationNumber}
                     minimumValue={0}
                     thumbTintColor={colors.WHITE.LIGHT}
                     minimumTrackTintColor={colors.BLUE.SOFT}
                     maximumTrackTintColor={colors.BLUE.SOFT}
                     style={styles.seekBar}
-                    value={position}
+                    value={position || 0}
                     onSlidingComplete={onSlidingComplete}
                 />
-                <Text style={{color: '#FFF'}}>{dateSecToString(stringToNumber(active.durationText))}</Text>
+                <Text style={{color: '#FFF'}}>{dateSecToString(active.durationNumber)}</Text>
             </View>
             <View
                 style={styles.controlContainer}
