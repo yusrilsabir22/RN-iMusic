@@ -62,7 +62,7 @@ const MusicPlayer: React.FC<GlobalProps> = (props) => {
     const play = async () => {
         await TrackPlayer.add({
             id: active.videoId,
-            url: 'http://10.0.2.2:3002/youtube/play?uc='+active.videoId,
+            url: 'http://music.blondev.my.id/youtube/play?uc='+active.videoId,
             title: active.title,
             artist: active.owner
         });
@@ -122,7 +122,7 @@ const MusicPlayer: React.FC<GlobalProps> = (props) => {
                     </ScrollView>
                     <View style={{marginTop: SPACING * 2}}>
                         <Text style={{fontSize: 20, letterSpacing: 1, color: 'white', fontWeight: 'bold'}}>{active.owner}</Text>
-                        <TextScroller text={active.title} delay={0} duration={(active.title.length % 52) * 1000} />
+                        <TextScroller text={active.title || ''} delay={0} duration={(active.title.length % 52) * 1000} />
                     </View>
                 </View>
             </View>

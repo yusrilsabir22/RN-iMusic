@@ -1,7 +1,7 @@
-import { RootScreenNavigationProp, RootScreenRouteProps } from './config/navigation';
+import { MainScreenNavigationProp, MainScreenRouteProps } from './config/navigation';
 export type GlobalProps = {
-    navigation: RootScreenNavigationProp;
-    route: RootScreenRouteProps;
+    navigation: MainScreenNavigationProp;
+    route: MainScreenRouteProps;
 }
 
 export type ListPlaylist = {
@@ -37,3 +37,10 @@ export interface APIResponse<T> {
     data: T;
     status: number
 }
+
+export enum PlayerScreen {
+    show = 'SHOW',
+    hide = 'HIDE',
+    full = 'FULL'
+}
+

@@ -1,5 +1,6 @@
+import { PlayerScreen } from './../types';
 import { YoutubeAPIResponse, YoutubePlaylist } from '../types';
-import { SAVE_PLAYLIST, SAVE_YOUTUBE, SET_ACTIVE_PLAYLIST, SET_LOADING } from './types';
+import { SAVE_PLAYLIST, SAVE_YOUTUBE, SET_ACTIVE_PLAYLIST, SET_LOADING, SET_PLAYER_SCREEN } from './types';
 
 export interface YoutubeReducerState  {
     data: YoutubeAPIResponse;
@@ -7,6 +8,7 @@ export interface YoutubeReducerState  {
     active: YoutubePlaylist;
     loading: boolean;
     playlistTitle: string;
+    player: PlayerScreen;
 }
 
 const defaultState: YoutubeReducerState = {
@@ -15,6 +17,7 @@ const defaultState: YoutubeReducerState = {
     active: null,
     loading: true,
     playlistTitle: '',
+    player: PlayerScreen.show
 }
 
 const reducers = (state = defaultState, action) => {
@@ -41,6 +44,11 @@ const reducers = (state = defaultState, action) => {
                 active: action.payload.data,
                 playlistTitle: action.payload.title
             };
+        case SET_PLAYER_SCREEN:
+            return {
+                ...state,
+                player: action.payload
+            }
         default:
             return state;
     }

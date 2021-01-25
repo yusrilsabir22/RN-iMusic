@@ -1,4 +1,4 @@
-const URL = 'http://10.0.2.2:3002/';
+const URL = 'http://music.blondev.my.id/';
 
 export default class Service {
   static async GET(path: string) {

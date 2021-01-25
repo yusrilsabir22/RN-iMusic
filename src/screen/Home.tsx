@@ -101,7 +101,7 @@ const Home: React.FC<GlobalProps> = (props) => {
                 />
             </View>
             </ScrollView>
-            <TouchableWithoutFeedback onPress={() => {props.navigation.navigate('MusicPlayer')}}>
+            {/* <TouchableWithoutFeedback onPress={() => {props.navigation.navigate('MusicPlayer')}}>
                 <View style={styles.musicPlayer}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                         <Image
@@ -132,7 +132,7 @@ const Home: React.FC<GlobalProps> = (props) => {
                         <FontAwesome5 name="pause" size={20} color={colors.WHITE.LIGHT} />
                     </TouchableHighlight>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
         </View>
     );
 };

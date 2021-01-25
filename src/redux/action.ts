@@ -1,4 +1,4 @@
-import { FETCH_YOUTUBE, FETCH_SEARCH, FETCH_PLAYLIST } from './types';
+import { FETCH_YOUTUBE, FETCH_SEARCH, FETCH_PLAYLIST, SET_PLAYER_SCREEN } from './types';
 
 export const fetchYoutube = () => {
     return {
@@ -28,3 +28,15 @@ export const fetchSearch = (payload) => {
     }
 }
 
+/**
+ *
+ * @param payload is enum PlayerScreen
+ * @see src/types.ts
+ */
+
+export const setPlayerScreen = (payload) => {
+    return {
+        type: SET_PLAYER_SCREEN,
+        payload
+    }
+}

@@ -16,6 +16,10 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './src/redux/reducers';
 import rootSaga from './src/redux';
+import { View } from 'react-native';
+import { colors } from './src/utils/color';
+import {SCREEN_WIDTH} from './src/utils/screen'
+import MiniPlayer from './src/component/MiniPlayer';
 
 
 
@@ -28,6 +32,7 @@ const App = () => {
       <NavigationContainer>
         <StackNavigator/>
       </NavigationContainer>
+        <MiniPlayer />
     </Provider>
   );
 };

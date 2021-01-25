@@ -16,7 +16,7 @@ function* onFetchYoutube(_action: any) {
 function* onFetchPlaylist(action: any) {
     try {
         yield put({type: SET_LOADING})
-        const res: APIResponse<YoutubePlaylist> = yield call(Service.GET, `youtube/playlist?list=${action.payload}`);
+        const res: APIResponse<YoutubePlaylist> = yield call(Service.GET, `playlist?list=${action.payload}`);
         yield put({type: SAVE_PLAYLIST, payload: res.data});
     } catch (error) {
         console.log(error);

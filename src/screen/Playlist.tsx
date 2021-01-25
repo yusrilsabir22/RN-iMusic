@@ -79,7 +79,7 @@ const Playlist: React.FC<GlobalProps> = (props) => {
             </View>
 
             {/* <TouchableWithoutFeedback> */}
-                <View style={[styles.musicPlayer, {position: 'absolute', bottom: 45, right: 0, left: 0}]}>
+                {/* <View style={[styles.musicPlayer, {position: 'absolute', bottom: 45, right: 0, left: 0}]}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                         <Image
                             style={[styles.musicPlayerImg]}
@@ -108,7 +108,7 @@ const Playlist: React.FC<GlobalProps> = (props) => {
                     <TouchableOpacity onPress={() => {}}>
                         <FontAwesome5Icon name="pause" size={20} color={colors.WHITE.LIGHT} />
                     </TouchableOpacity>
-                </View>
+                </View> */}
             {/* </TouchableWithoutFeedback> */}
         </ImageBackground>
     );
